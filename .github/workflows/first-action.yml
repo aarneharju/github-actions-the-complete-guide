@@ -1,0 +1,18 @@
+name: First Workflow
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print greeting
+        run: echo "Hello World!!!"
+      - name: Print goodbye
+        run: echo "Goodbye World!!!"
+  blow-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Multiline script
+        run: |
+          echo "This is the first line"
+          echo "...and this is the second line"
+          echo "and you can add so many more!!! This is heaven!"

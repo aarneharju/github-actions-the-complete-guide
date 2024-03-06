@@ -17,6 +17,9 @@ on:
     paths-ignore:
       - ".github/workflows/*" # if any file changes inside the workflows folder the workflow doesn't run on push
 jobs:
+  defaults:
+    run:
+      - working-directory: ./events-deepdive
   deploy:
     runs-on: ubuntu-latest
     steps:

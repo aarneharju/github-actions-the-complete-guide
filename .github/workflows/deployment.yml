@@ -3,7 +3,7 @@ name: Test and Deploy
 on:
   push:
     paths:
-      - "./gh-second-action/*"
+      - gh-second-action/**
   workflow_dispatch:
 jobs:
   test:

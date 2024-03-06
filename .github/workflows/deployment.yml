@@ -19,6 +19,7 @@ jobs:
         run: npm test
         working-directory: ./gh-second-workflow
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code

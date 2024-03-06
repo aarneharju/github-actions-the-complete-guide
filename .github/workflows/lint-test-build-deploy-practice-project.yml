@@ -1,10 +1,10 @@
 name: Lint - test - build - deploy practice project
 # on: [push, workflow_dispatch]
 on:
-  - push:
+  push:
     paths:
       - "./practice-project/*"
-  - workflow_dispatch:
+  workflow_dispatch:
 defaults:
   run:
     working-directory: ./practice-project

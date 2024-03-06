@@ -1,10 +1,10 @@
 name: Test and Deploy
 # on: [push, workflow_dispatch]
 on:
-  - push:
+  push:
     paths:
       - "./gh-second-action/*"
-  - workflow_dispatch:
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest

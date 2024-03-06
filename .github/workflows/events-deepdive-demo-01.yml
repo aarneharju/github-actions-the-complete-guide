@@ -27,7 +27,6 @@ jobs:
     steps:
       - name: Output event data
         run: echo "${{ toJSON(github.event) }}"
-        working-directory: ./events-deepdive-v2
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies

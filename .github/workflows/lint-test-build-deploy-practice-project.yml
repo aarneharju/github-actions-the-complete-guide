@@ -3,7 +3,7 @@ name: Lint - test - build - deploy practice project
 on:
   push:
     paths:
-      - "./practice-project/*"
+      - "./practice-project/**"
   workflow_dispatch:
 defaults:
   run:

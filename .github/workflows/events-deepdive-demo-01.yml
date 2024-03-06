@@ -20,7 +20,7 @@ on:
     #   - "./events-deepdive"
 defaults:
   run:
-    working-directory: events-deepdive
+    working-directory: "./events-deepdive-v2"
 jobs:
   deploy:
     runs-on: ubuntu-latest

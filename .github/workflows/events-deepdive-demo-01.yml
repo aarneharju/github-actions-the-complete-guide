@@ -18,22 +18,27 @@ on:
     #   - ".github/workflows/*" # if any file changes inside the workflows folder the workflow doesn't run on push
     # paths:
     #   - "./events-deepdive"
-defaults:
-  run:
-    working-directory: events-deepdive-v2
+# defaults:
+#   run:
+#     working-directory: events-deepdive-v2
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Output event data
         run: echo "${{ toJSON(github.event) }}"
+        working-directory: ./events-deepdive-v2
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm ci
+        working-directory: ./events-deepdive-v2
       - name: Test code
         run: npm run test
+        working-directory: ./events-deepdive-v2
       - name: Build code
         run: npm run build
+        working-directory: ./events-deepdive-v2
       - name: Deploy project
         run: echo "Deploying..."
+        working-directory: ./events-deepdive-v2

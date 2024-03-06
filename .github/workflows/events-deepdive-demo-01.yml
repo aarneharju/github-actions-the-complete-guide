@@ -16,11 +16,8 @@ on:
       - "feat/**" # any branch that starts with feat/ and can include slashes
     # paths-ignore:
     #   - ".github/workflows/*" # if any file changes inside the workflows folder the workflow doesn't run on push
-    # paths:
-    #   - "./events-deepdive"
-# defaults:
-#   run:
-#     working-directory: events-deepdive-v2
+    paths:
+      - "./events-deepdive"
 jobs:
   deploy:
     runs-on: ubuntu-latest

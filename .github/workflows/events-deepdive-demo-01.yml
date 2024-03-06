@@ -1,5 +1,10 @@
-name: Events Demo 1
-on: ...
+name: Events Deepdive Demo 1
+on:
+  pull_request:
+    types: [opened, edited]
+      # - opened -> same result, different syntax
+      # - edited
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest

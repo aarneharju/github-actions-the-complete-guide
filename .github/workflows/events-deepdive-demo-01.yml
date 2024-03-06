@@ -4,7 +4,16 @@ on:
     types: [opened, edited]
       # - opened -> same result, different syntax
       # - edited
+    branches:
+      - main # main branch
+      - "dev-*" # any branch that starts with dev-
+      - "feat/**" # any branch that starts with feat/ and can include slashes
   workflow_dispatch:
+  push:
+    branches:
+      - main # main branch
+      - "dev-*" # any branch that starts with dev-
+      - "feat/**" # any branch that starts with feat/ and can include slashes
 jobs:
   deploy:
     runs-on: ubuntu-latest

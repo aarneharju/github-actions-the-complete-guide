@@ -36,7 +36,7 @@ jobs:
         run: npm run build
       - name: Publish JS filename
         id: publish-js-filename # set id to make it accessible with steps context
-        run: find job-artifacts/dist/assets/*.js -type f -execdir echo "js-file-with-changing-name={}" >> $GITHUB_OUTPUT ";" # finds the javascript file in the assets folder and prints its name and saves it as a key-value pair in the output variable
+        run: find dist/assets/*.js -type f -execdir echo "js-file-with-changing-name={}" >> $GITHUB_OUTPUT ";" # finds the javascript file in the assets folder and prints its name and saves it as a key-value pair in the output variable
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:

@@ -25,6 +25,8 @@ jobs:
       run:
         working-directory: job-artifacts
     runs-on: ubuntu-latest
+    outputs: # Set the output for the job
+      js-file-with-changing-name: ${{ steps.publish-js-filename.outputs.js-file-with-changing-name }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -32,6 +34,9 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
+      - name: Publish JS filename
+        id: publish-js-filename # set id to make it accessible with steps context
+        run: find job-artifacts/dist/assets/*.js -type f -execdir echo "js-file-with-changing-name={}" >> $GITHUB_OUTPUT ";" # finds the javascript file in the assets folder and prints its name and saves it as a key-value pair in the output variable
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:

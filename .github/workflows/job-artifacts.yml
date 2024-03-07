@@ -55,5 +55,7 @@ jobs:
           name: dist-files
       - name: Output contents
         run: ls
+      - name: Output filename from the build job
+        run: echo "${{ needs.build.outputs.js-file-with-changing-name }}"
       - name: Deploy
         run: echo "Deploying..."

@@ -66,6 +66,8 @@ jobs:
       - name: Build website
         id: build-website
         run: npm run build
+      - name: Print folder contents
+        run: ls
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:

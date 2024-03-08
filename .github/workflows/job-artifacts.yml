@@ -1,11 +1,11 @@
 name: Job artifacts demo
 on:
   push:
+    paths: 
+      - job-artifacts/**
     branches:
       - main
   workflow_dispatch:
-  paths: 
-    - job-artifacts/**
 jobs:
   test:
     defaults:

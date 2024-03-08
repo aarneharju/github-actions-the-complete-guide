@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-report
-          path: test.json
+          path: controlling-workflow-and-job-execution/test.json
   build:
     defaults:
       run:
@@ -72,7 +72,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dist-files
-          path: dist
+          path: controlling-workflow-and-job-execution/dist
   deploy:
     needs: build
     runs-on: ubuntu-latest

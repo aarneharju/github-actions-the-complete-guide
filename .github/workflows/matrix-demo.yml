@@ -1,0 +1,25 @@
+name: Matrix demo
+on: [push, workflow_dispatch]
+jobs:
+  build-using-matrix:
+    name: Build using matrix
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-version-to-test: [12, 14, 16]
+        os-to-test: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os-to-test }}
+    defaults:
+      run:
+        working-directory: controlling-workflow-and-job-execution
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version-to-test }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build

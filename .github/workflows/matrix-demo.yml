@@ -8,6 +8,13 @@ jobs:
       matrix:
         node-version-to-test: [12, 14, 16]
         os-to-test: [ubuntu-latest, windows-latest]
+        include:
+          - node-version-to-test: 18
+            os-to-test: ubuntu-20.04
+            # you could also add here new items like node: 6
+        exclude:
+          - node-version-to-test: 12
+            os-to-test: windows-latest
     runs-on: ${{ matrix.os-to-test }}
     defaults:
       run:

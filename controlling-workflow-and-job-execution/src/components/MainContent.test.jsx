@@ -19,6 +19,6 @@ describe('MainContent', () => {
 
     const button = screen.getByRole('button');
     await userEvent.click(button);
-    expect(screen.getByTestId('help-are')).toBeInTheDocument();
+    expect(screen.getByTestId('help-are')).toBeInTheDocument(); // change back to help-area to make test work again
   });
 });

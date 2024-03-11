@@ -40,8 +40,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Test code
+        id: id-step-test-code
         run: npm run test
       - name: Upload test report
+        if: failure() && steps.id-step-test-code.outcome == 'failure' # ${{}} syntax not needed in if statements. failure() is needed to get past a failing step and the conclusion makes sure that it was the tests that failed and not dependency installation for example
         uses: actions/upload-artifact@v3
         with:
           name: test-report

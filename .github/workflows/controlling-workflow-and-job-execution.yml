@@ -17,9 +17,10 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: controlling-workflow-and-job-execution/node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        if: steps.cache.output.cache-hit != 'true'
         run: npm ci
       - name: Lint code
         run: npm run lint
@@ -94,6 +95,6 @@ jobs:
     if: failure()
     steps:
       - name: Output information
-        run: |
+        run: |  
           echo "Something went wrong"
           echo "${{ toJSON(github) }}"

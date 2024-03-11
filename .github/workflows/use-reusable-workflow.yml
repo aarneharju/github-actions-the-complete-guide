@@ -81,6 +81,8 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable-deploy-and-upload.yml
+    with:
+      artifact-name: dist-files
   report-if-something-failed:
     name: Report if something failed
     needs: [lint, deploy]

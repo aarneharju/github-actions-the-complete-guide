@@ -7,6 +7,9 @@ on:
         required: false
         default: dist
         type: string
+      # secrets:
+      #   some-secret:
+      #     required: false
 jobs:
   deploy-and-upload:
     name: Deploy and upload job

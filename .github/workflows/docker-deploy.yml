@@ -15,11 +15,17 @@ jobs:
       image: node:16
       # env: (put environment variables that the container needs here, env variables needed by the job go below as usual)
     env:
-      MONGODB_CONNECTION_PROTOCOL: mongodb+srv
-      MONGODB_CLUSTER_ADDRESS: cluster0.d1sqgcl.mongodb.net
-      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      MONGODB_CONNECTION_PROTOCOL: mongodb # need to remove +srv from the end with this container setup
+      MONGODB_CLUSTER_ADDRESS: mongodb-test-database # This is the name defined in services and can only be used like this if the job is run in a container
+      MONGODB_USERNAME: root
+      MONGODB_PASSWORD: groot
       PORT: 8080
+    services:
+      mongodb-test-database:
+        image: mongo
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: groot
     defaults:
       run:
         working-directory: docker-demo

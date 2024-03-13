@@ -1,8 +1,9 @@
 name: Use a reusable workflow inside this one
 on:
   push:
-    branches:
-      - main
+    paths:
+      - controlling-workflow-and-job-execution/**
+      - .github/workflows/use-reusable-workflow.yml
   workflow_dispatch:
 jobs:
   lint:

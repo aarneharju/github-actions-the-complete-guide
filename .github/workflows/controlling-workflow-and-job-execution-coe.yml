@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - controlling-workflow-and-job-execution/**
+      - .github/workflows/controlling-workflow-and-job-execution-coe.yml
   workflow_dispatch:
 jobs:
   lint:

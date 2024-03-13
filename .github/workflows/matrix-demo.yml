@@ -1,5 +1,10 @@
 name: Matrix demo
-on: [push, workflow_dispatch]
+on:
+  push:
+    paths:
+      - matrix-demo/**
+      - .github/workflows/matrix-demo.yml
+  workflow_dispatch:
 jobs:
   build-using-matrix:
     name: Build using matrix

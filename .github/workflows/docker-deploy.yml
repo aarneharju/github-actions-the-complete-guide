@@ -11,6 +11,9 @@ jobs:
   test:
     environment: testing
     runs-on: ubuntu-latest
+    container:
+      image: node:16
+      # env: (put environment variables that the container needs here, env variables needed by the job go below as usual)
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       MONGODB_CLUSTER_ADDRESS: cluster0.d1sqgcl.mongodb.net

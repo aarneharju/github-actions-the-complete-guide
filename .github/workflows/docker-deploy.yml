@@ -11,18 +11,20 @@ jobs:
   test:
     environment: testing
     runs-on: ubuntu-latest
-    container:
-      image: node:16
+    # container:
+    #   image: node:16
       # env: (put environment variables that the container needs here, env variables needed by the job go below as usual)
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb # need to remove +srv from the end with this container setup
-      MONGODB_CLUSTER_ADDRESS: mongodb-test-database # This is the name defined in services and can only be used like this if the job is run in a container
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017 # When not running the job in a container, address needs to be setup like this
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: groot
       PORT: 8080
     services:
       mongodb-test-database:
         image: mongo
+        ports:
+          - 27017:27017 # when not running the job in a container, the ports need to be define
         env:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: groot

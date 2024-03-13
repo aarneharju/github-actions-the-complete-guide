@@ -4,6 +4,9 @@ on:
     branches:
       - main
       - dev
+    paths:
+      - docker-demo/**
+      - .github/workflows/docker-deploy.yml
 env:
   CACHE_KEY: node-deps
   MONGODB_DB_NAME: gha-demo

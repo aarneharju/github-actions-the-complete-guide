@@ -6,6 +6,8 @@ on:
     paths:
       - custom-actions/**
       - .github/workflows/custom-actions.yml
+      - .github/actions/cached-dependencies/action.yml
+  workflow_dispatch:
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -15,15 +17,8 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Load and cache dependencies
+        uses: ./.github/actions/cached-dependencies # Path needs to start from the root of the project and it's not related to the workflow file. You need to have action.yml here and it is automatically found. Alternatively, if you created a repository for the action you could reference it here like this: aarneharju/my-action
       - name: Lint code
         run: npm run lint
   test:

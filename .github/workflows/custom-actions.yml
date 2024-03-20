@@ -17,10 +17,13 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Load and cache dependencies
+      - name: Install and cache dependencies
+        id: install-and-cache-dependencies
         uses: ./.github/actions/cached-dependencies # Path needs to start from the root of the project and it's not related to the workflow file. You need to have action.yml here and it is automatically found. Alternatively, if you created a repository for the action you could reference it here like this: aarneharju/my-action
         with:
           use-caching: 'false'
+      - name: Output whether cache was used
+        run: echo "Cache was used? ${{ steps.install-and-cache-dependencies.outputs.used-cache }}"
       - name: Lint code
         run: npm run lint
   test:

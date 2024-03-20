@@ -92,3 +92,11 @@ jobs:
         run: ls ./custom-actions/
       - name: Deploy site
         run: echo "Deploying..."
+  information:
+    name: Output greeting using a custom javascript action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Run custom javascript action
+        uses: ./.github/actions/deploy-s3-javascript

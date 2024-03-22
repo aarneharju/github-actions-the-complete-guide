@@ -16,7 +16,8 @@ function run() {
     // github.getOctokit() could be used to send requests to the github rest api
     // github.context provides access to some values of the github context object
 
-    core.notice('Hello from my custom JavaScript Action')
+    const websiteUrl = `http://${bucket}.s3-website-${bucketRegion}.amazonaws.com`;
+    core.setOutput("website-url", websiteUrl);
 }
 
 run();

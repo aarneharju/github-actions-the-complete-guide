@@ -99,3 +99,6 @@ jobs:
           aws-bucket: github-actions-custom-action-hosting-test
           aws-bucket-region: eu-north-1
           dist-folder: custom-actions/dist
+      - name: Print website url
+        run: |
+          echo "Live URL: ${{steps.deploy-site.outputs.website-url}}"

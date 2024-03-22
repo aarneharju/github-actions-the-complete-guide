@@ -10,6 +10,9 @@ inputs:
     default: us-east-1
   dist-folder:
     description: The folder containing the deployable files
+outputs:
+  website-url:
+    description: Output the url of the website on aws
 runs:
   using: node16
   main: main.js

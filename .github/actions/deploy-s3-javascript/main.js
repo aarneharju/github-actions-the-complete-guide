@@ -11,7 +11,11 @@ function run() {
 
     // Upload files
     const s3URI = `s3://${bucket}`
+    exec.exec(`aws configure list`)
     exec.exec(`aws s3 sync ${distFolder} ${s3URI} --region ${bucketRegion}`) // uses AWS CLI that is installed on the runner machine
+    // exec.exec(`export AWS_ACCESS_KEY_ID=${core.getInput("AWS_ACCESS_KEY_ID")}`)
+    // exec.exec(`export AWS_SECRET_ACCESS_KEY=${core.getInput("AWS_SECRET_ACCESS_KEY")}`)
+
 
     // github.getOctokit() could be used to send requests to the github rest api
     // github.context provides access to some values of the github context object

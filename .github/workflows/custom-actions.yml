@@ -91,12 +91,11 @@ jobs:
       - name: Output contents
         run: ls ./custom-actions/
       - name: Deploy site
-        run: echo "Deploying..."
-  information:
-    name: Output greeting using a custom javascript action
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Run custom javascript action
         uses: ./.github/actions/deploy-s3-javascript
+        env:
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        with:
+          aws-bucket: github-actions-custom-action-hosting-test
+          aws-bucket-region: eu-north-1
+          dist-folder: custom-actions/dist

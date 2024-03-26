@@ -5,6 +5,8 @@ on:
       - opened
 jobs:
   assign-label:
+    permissions:
+      issues: write # the GITHUB_TOKEN below gets written according to the permissions set here
     runs-on: ubuntu-latest
     steps:
       - name: Assign label
